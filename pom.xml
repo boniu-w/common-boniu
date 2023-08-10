@@ -61,7 +61,7 @@
             </plugin>
 
             <!-- Nexus Staging Maven 插件是将组件部署到 OSSRH 并将它们发布到中央存储库的推荐方法。要配置它，只需将插件添加到您的 Maven pom.xml-->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>1.6.7</version>
@@ -71,10 +71,10 @@
                     <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
             <!-- gpg 插件, Maven GPG 插件用于对具有以下配置的组件进行签名-->
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
@@ -87,10 +87,10 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
             <!-- 源码包插件, 非必须 -->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
@@ -106,15 +106,15 @@
                 <configuration>
                     <attach>true</attach>
                 </configuration>
-            </plugin>
+            </plugin>-->
 
             <!-- doc 插件, 非必须 -->
-            <plugin>
+            <!--<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
-                    <!-- 设置 failOnError 为 false，忽略错误, 解决error: Missing: no javadoc jar found in folder  -->
+                    &lt;!&ndash; 设置 failOnError 为 false，忽略错误, 解决error: Missing: no javadoc jar found in folder  &ndash;&gt;
                     <failOnError>false</failOnError>
                 </configuration>
                 <executions>
@@ -125,7 +125,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
