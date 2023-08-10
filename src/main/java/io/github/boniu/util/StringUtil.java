@@ -81,12 +81,12 @@ public class StringUtil {
     public static String decodeUnicode2(String dataStr) {
         int start = 0;
         int end = 0;
-        final StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         while (start > -1) {
             end = dataStr.indexOf("\\u", start + 2);
             String charStr = null;
             if (end == -1) {
-                charStr = dataStr.substring(start + 2, dataStr.length());
+                charStr = dataStr.substring(start + 2);
             } else {
                 charStr = dataStr.substring(start + 2, end);
             }

@@ -7,6 +7,9 @@
     <groupId>io.github.boniu-w</groupId>
     <artifactId>common-boniu</artifactId>
     <version>08102023</version>
+    <name>common-boniu</name>
+    <description>common util</description>
+    <url>https://github.com/boniu-w/common-boniu</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -61,20 +64,20 @@
             </plugin>
 
             <!-- Nexus Staging Maven 插件是将组件部署到 OSSRH 并将它们发布到中央存储库的推荐方法。要配置它，只需将插件添加到您的 Maven pom.xml-->
-            <!--<plugin>
+           <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.7</version>
+                <version>1.6.13</version>
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
                     <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
             <!-- gpg 插件, Maven GPG 插件用于对具有以下配置的组件进行签名-->
-           <!-- <plugin>
+           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
@@ -87,10 +90,10 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
 
             <!-- 源码包插件, 非必须 -->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
@@ -106,15 +109,15 @@
                 <configuration>
                     <attach>true</attach>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
             <!-- doc 插件, 非必须 -->
-            <!--<plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
-                    &lt;!&ndash; 设置 failOnError 为 false，忽略错误, 解决error: Missing: no javadoc jar found in folder  &ndash;&gt;
+                    <!-- 设置 failOnError 为 false，忽略错误, 解决error: Missing: no javadoc jar found in folder  -->
                     <failOnError>false</failOnError>
                 </configuration>
                 <executions>
@@ -125,9 +128,19 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
+
+    <!-- 作者   -->
+    <developers>
+        <developer>
+            <name>boniu</name>
+            <email>boniu-w@Live.cn</email>
+            <url>https://github.com/boniu-w</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <!-- 开源协议   -->
     <licenses>
