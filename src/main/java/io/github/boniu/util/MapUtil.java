@@ -2,6 +2,12 @@ package io.github.boniu.util;
 
 import org.apache.commons.lang3.ObjectUtils;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -117,10 +123,43 @@ public class MapUtil {
                 field.setAccessible(true); // 设置字段可访问以便修改值
                 if (map.containsKey(field.getName())) { // 找到对应的键
                     Object value = map.get(field.getName());
-                    field.set(obj, value); // 设置实体类对象的成员变量的值
+                    if (value != null) {
+                        if (field.getType() == Date.class && value instanceof String) {
+                            if (StringUtil.isNotBlank((String) value)) {
+                                // 对于 Date 类型的字段，将字符串转换为 Date 对象
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // 根据实际需求选择日期格式
+                                Date dateValue = dateFormat.parse((String) value);
+                                field.set(obj, dateValue);
+                            }
+                        } else if (field.getType() == Integer.class && value instanceof String) {
+                            if (StringUtil.isNotBlank((String) value) && StringUtil.isNumber(value)) {
+                                // 对于 Integer 类型的字段，将字符串转换为 Integer 对象
+                                Integer intValue = Integer.parseInt((String) value);
+                                field.set(obj, intValue);
+                            }
+                        } else if (field.getType() == LocalDateTime.class && value instanceof String) {
+                            if (StringUtil.isNotBlank((String) value)) {
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                                LocalDateTime dateTime = LocalDateTime.parse((String) value, formatter);
+                                field.set(obj, dateTime);
+                            }
+                        } else if (field.getType() == LocalDateTime.class && value instanceof Date) {
+                            LocalDateTime localDateTime = DateUtils.toLocalDateTime((Date) value);
+                            field.set(obj, localDateTime);
+                        } else if (field.getType() == BigDecimal.class && value instanceof String) {
+                            if (StringUtil.isNotBlank((String) value)) {
+                                if (StringUtil.isNumber(value)) {
+                                    BigDecimal bigDecimal = new BigDecimal((String) value);
+                                    field.set(obj, bigDecimal);
+                                }
+                            }
+                        } else {
+                            field.set(obj, value);
+                        }
+                    }
                 }
             }
-        } catch (InstantiationException | IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException | ParseException e) {
             e.printStackTrace();
             return null;
         }
