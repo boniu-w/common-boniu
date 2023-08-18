@@ -1,6 +1,6 @@
 package io.github.boniu.util;
 
-import io.github.boniu.exception.WgException;
+import io.github.boniu.exception.TheException;
 import org.apache.commons.lang3.StringUtils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -333,7 +333,7 @@ public class StringUtil {
     }
     
     public static void testTransactionThrow() {
-        throw new WgException(500);
+        throw new TheException(500);
     }
     
     /************************************************************************
