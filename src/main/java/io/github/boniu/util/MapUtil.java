@@ -1,6 +1,7 @@
 package io.github.boniu.util;
 
 import org.apache.commons.lang3.ObjectUtils;
+
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -13,22 +14,22 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/************************************************************************
+/**
  * @author: wg
  * @description:
  * @createTime: 11:27 2022/3/9
  * @updateTime: 11:27 2022/3/9
- ************************************************************************/
+ */
 public class MapUtil {
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description: 检查map里所有的值是否都为空
      * @params:
      * @return: 如果map里所有的值都为空, return true;
      * @createTime: 11:39  2022/3/9
      * @updateTime: 11:39  2022/3/9
-     ************************************************************************/
+     */
     public static boolean isAllEmptyValue(Map map) {
         AtomicBoolean atomicBoolean = new AtomicBoolean(true);
         map.forEach((k, v) -> {
@@ -36,84 +37,84 @@ public class MapUtil {
                 atomicBoolean.set(false);
             }
         });
-        
+
         if (atomicBoolean.get()) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public static <T> boolean isEmpty(Map<Long, T> map) {
         return null == map || map.size() == 0;
     }
-    
+
     public static <K, V> Map<K, V> removeSomeKey(Map<K, V> map, final K... keys) {
         for (K key : keys) {
             map.remove(key);
         }
         return map;
     }
-    
+
     public static Map<String, Object> removeSomeKey(Map<String, Object> map, Set<String> keySet) {
         for (String key : keySet) {
             map.remove(key);
         }
         return map;
     }
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description:
      * @params:
      * @return:
      * @createTime: 16:49  2022/9/15
      * @updateTime: 16:49  2022/9/15
-     ************************************************************************/
+     */
     public static boolean containsSomeKey(Map<String, Object> map, Set<String> keySet) {
         for (String k : keySet) {
             if (map.containsKey(k)) {
                 return true;
             }
         }
-        
+
         return false;
     }
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description: 除了 这些 key 还有其他 key
      * @params:
      * @return:
      * @createTime: 16:58  2022/9/15
      * @updateTime: 16:58  2022/9/15
-     ************************************************************************/
+     */
     public static boolean hasOtherKey(Map<String, Object> map, Set<String> keySet) {
         Map<String, Object> map2 = new HashMap<>(map);
-        
+
         for (String key : keySet) {
             map2.remove(key);
         }
-        
+
         return !map2.isEmpty();
     }
-    
+
     public static boolean containsKey(Map<String, Object> map, Set<String> keySet) {
         for (String s : keySet) {
             if (map.containsKey(s)) return true;
         }
-        
+
         return false;
     }
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description: map 转 实体类
      * @params:
      * @return:
      * @createTime: 15:05  2023/6/1
      * @updateTime: 15:05  2023/6/1
-     ************************************************************************/
+     */
     public static <T> T map2Bean(Map<String, Object> map, Class<T> clazz) {
         T obj;
         try {
@@ -165,15 +166,15 @@ public class MapUtil {
         }
         return obj;
     }
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description: 实体类 转 map
      * @params:
      * @return:
      * @createTime: 15:11  2023/6/1
      * @updateTime: 15:11  2023/6/1
-     ************************************************************************/
+     */
     public static <T> Map<String, Object> bean2Map(T obj) {
         Map<String, Object> map = new HashMap<>();
         try {
@@ -188,25 +189,25 @@ public class MapUtil {
         }
         return map;
     }
-    
-    /************************************************************************
+
+    /**
      * @author: wg
      * @description: 层级结构的map 根据key获取 值
      * @params: key = wg.jwt.secret
      * @return:
      * @createTime: 10:57  2023/5/26
      * @updateTime: 10:57  2023/5/26
-     ************************************************************************/
+     */
     public static Object get(Map<String, Object> hierarchyMap, String key) {
         if (hierarchyMap == null || key == null) {
             return null;
         }
-        
+
         String[] split = key.split("\\.");
         if (!hierarchyMap.containsKey(split[0])) {
             return null;
         }
-        
+
         Object obj = hierarchyMap.get(split[0]);
         if (obj instanceof Map) {
             return get((Map<String, Object>) obj, key.substring(key.indexOf(".") + 1));

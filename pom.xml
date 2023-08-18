@@ -18,6 +18,15 @@
     </properties>
 
     <dependencies>
+        <!-- Feb 13, 2021 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- 01292023 -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -67,7 +76,7 @@
            <plugin>
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.6.13</version>
+                <version>1.6.13</version><!-- 版本升级, 不然发布有error -->
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
