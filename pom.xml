@@ -18,6 +18,14 @@
     </properties>
 
     <dependencies>
+
+        <!-- Dec 19, 2017 -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>2.0.1.Final</version>
+        </dependency>
+
         <!-- Feb 13, 2021 -->
         <dependency>
             <groupId>junit</groupId>
