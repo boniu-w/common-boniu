@@ -145,7 +145,7 @@ public class MapUtil {
                                 field.set(obj, dateTime);
                             }
                         } else if (field.getType() == LocalDateTime.class && value instanceof Date) {
-                            LocalDateTime localDateTime = DateUtils.toLocalDateTime((Date) value);
+                            LocalDateTime localDateTime = DateUtil.toLocalDateTime((Date) value);
                             field.set(obj, localDateTime);
                         } else if (field.getType() == BigDecimal.class && value instanceof String) {
                             if (StringUtil.isNotBlank((String) value)) {

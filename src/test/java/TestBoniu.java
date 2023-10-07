@@ -1,6 +1,5 @@
-import io.github.boniu.util.DateUtils;
+import io.github.boniu.util.DateUtil;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 /************************************************************************
  * author: wg
@@ -15,7 +14,7 @@ public class TestBoniu {
     public void dateTest(){
         String dateStr="20230909";
 
-        boolean b = DateUtils.isDate(dateStr);
+        boolean b = DateUtil.isDate(dateStr);
         System.out.println("b = " + b);
     }
 }
