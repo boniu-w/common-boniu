@@ -272,4 +272,17 @@ public class DateUtil {
 
         return false;
     }
+
+    public static LocalDate toLocalDate(String localDateStr, String pattern) {
+        if (StringUtil.isBlank(localDateStr) || StringUtil.isBlank(pattern)) {
+            return null;
+        }
+        try {
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(pattern);
+            LocalDate parse = LocalDate.parse(localDateStr, dateTimeFormatter);
+            return parse;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
